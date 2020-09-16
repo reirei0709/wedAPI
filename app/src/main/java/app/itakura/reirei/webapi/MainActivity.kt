@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         requestButton.setOnClickListener{
             runBlocking(Dispatchers.IO){
-                kotlin.runCatching {
+                runCatching {
                     userService.getUser("lifeistech")
                 }
             }.onSuccess {
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
                 nameTextView.text = it.name
                 userIdTextView.text = it.userId
                 followingTextView.text = it.following.toString()
-                followersTextView.text = it.follwers.toString()
+                followersTextView.text = it.followers.toString()
             }.onFailure {
                 Toast.makeText(this,"失敗",Toast.LENGTH_LONG).show()
             }
